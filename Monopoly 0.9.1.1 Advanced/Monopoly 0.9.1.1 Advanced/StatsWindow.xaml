@@ -1,0 +1,437 @@
+﻿ <Window x:Class="Monopoly_0._9._1._1_Advanced.StatsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Monopoly_0._9._1._1_Advanced"
+        mc:Ignorable="d"
+        Title="StatsWindow" Height="700" Width="600" WindowStyle="None" MinHeight="650" MinWidth="550" RenderOptions.BitmapScalingMode="HighQuality">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+    <Grid x:Name="MainGrid" Background="#FFCEE6D0" >
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Canvas x:Name="Head" Grid.Column="0" Background="#FF92CB95" MouseDown="Head_MouseDown"/>
+        <Grid x:Name="YourStats" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="19*"/>
+                <ColumnDefinition Width="251*"/>
+                <ColumnDefinition Width="149*"/>
+                <ColumnDefinition Width="155*"/>
+                <ColumnDefinition Width="18*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Viewbox Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <TextBlock Padding="5" x:Name="YourUsername" Text="Username:" FontFamily="Modern No. 20" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+            <Viewbox Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label x:Name="YourBalance" Content="Balance:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label x:Name="YourPosition" Content="Position:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label   x:Name="YourPositionOwner" Content="Property owner:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label   x:Name="YourPositionPrice" Content="Price:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox Grid.Row="6" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label   x:Name="YourPositionHH" Content="Houses: 0/4  Hotels: 0/1"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox Grid.Row="7" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label   x:Name="YourPositonRentPrice" Content="Rent:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Canvas x:Name="YourPositionPicture" Grid.Column="2" Grid.Row="1" Grid.RowSpan="7">
+                
+            </Canvas>
+            <Canvas x:Name="YourPositionTitleDeed" Grid.Column="3" Grid.Row="1" Grid.RowSpan="7">
+                
+            </Canvas>
+
+            <Viewbox Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label   x:Name="OutOfJailText" Content="You have Get out of jail free card."  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+                <Button x:Name="OutOfJailButton" Content="Get out of jail"  Margin="0,1,0,0" BorderThickness="0" HorizontalAlignment="Left" Background="#FFAAD0B4" Height="25" Width="168" FontFamily="Stencil" Click="OutOfJailButton_Click"></Button>
+            </Viewbox>
+            
+            <Viewbox Grid.Column="1" Grid.Row="8" HorizontalAlignment="Left">
+                <Button x:Name="PayRent" Content="PAY RENT" Margin="0,1,0,0" BorderThickness="0" HorizontalAlignment="Left" Background="#FFAAD0B4" Height="25" Width="168" FontFamily="Stencil" Click="PayRent_Click"></Button>
+            </Viewbox>
+            <Viewbox Grid.Column="1" Grid.Row="9" HorizontalAlignment="Left">
+                <Button x:Name="PropertyOptions" Content="PROPERTY OPTIONS" Margin="0,1,0,0" BorderThickness="0" HorizontalAlignment="Left" Background="#FFAAD0B4" Height="25" Width="168" FontFamily="Stencil" Click="PropertyOptions_Click"></Button>
+            </Viewbox>
+            <Viewbox Grid.Column="1" Grid.Row="10" HorizontalAlignment="Left">
+                <Button x:Name="EndTurn" Content="END TURN" Margin="0,1,0,0" BorderThickness="0" HorizontalAlignment="Left" Background="#FFFF8080" Height="25" Width="168" FontFamily="Stencil" Click="EndTurn_Click" RenderTransformOrigin="0.595,0.595"></Button>
+            </Viewbox>
+            <Canvas Background="#FFAAD0AD" Grid.Column="1" Grid.Row="11" Grid.ColumnSpan="3" Margin="0,13,0,0"></Canvas>
+        </Grid>
+        
+        <Grid x:Name="CheckingPosition" Grid.Row="2" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="19*"/>
+                <ColumnDefinition Width="251*"/>
+                <ColumnDefinition Width="149*"/>
+                <ColumnDefinition Width="155*"/>
+                <ColumnDefinition Width="18*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Viewbox Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label x:Name="CheckingPositionName" Content="Position:" FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label x:Name="CheckingPositionOwner" Content="Owner:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label x:Name="CheckingPositionPrice" Content="Price:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" >
+                <Label   x:Name="CheckingPositionHouses" Content="Houses:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox Grid.Row="6" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label   x:Name="CheckingPositionHotels" Content="Hotels:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox Grid.Row="7" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label   x:Name="CheckingPositionHousesPrice" Content="House price:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox Grid.Row="8" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label   x:Name="CheckingPositionHotelsPrice" Content="Hotel price:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox Grid.Row="9" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label   x:Name="CheckingPositionRentPrice" Content="Rent:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+
+            <Canvas x:Name="CheckingPositionPicture" Grid.Column="2" Grid.Row="2" Grid.RowSpan="7">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="Resources/MonopolyData/26.png" AlignmentX="Left"  AlignmentY="Top" Stretch="Uniform"/>
+                </Canvas.Background>
+            </Canvas>
+            <Canvas x:Name="CheckingPositionTitleDeed" Grid.Column="3" Grid.Row="2" Grid.RowSpan="7">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="Resources/MonopolyData/Title Deeds/CONNECTICUT AVENUE.png" AlignmentX="Left"  AlignmentY="Top" Stretch="Uniform"/>
+                </Canvas.Background>
+            </Canvas>
+        </Grid>
+
+        <Grid x:Name="CheckingPlayer" Grid.Row="2" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="19*"/>
+                <ColumnDefinition Width="251*"/>
+                <ColumnDefinition Width="149*"/>
+                <ColumnDefinition Width="155*"/>
+                <ColumnDefinition Width="18*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Viewbox Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,0,0">
+                <Button x:Name="CheckingPlayerClose" Content="CLOSE" Margin="0,0,0,2" BorderThickness="0" HorizontalAlignment="Left" Background="#FFFF8080" Height="26" Width="79" FontFamily="Stencil" RenderTransformOrigin="0.551,0.551" Click="CheckingPlayerClose_Click"></Button>
+            </Viewbox>
+            <Canvas x:Name="CheckingPlayerPicture" Grid.Column="1" Grid.Row="2" Grid.RowSpan="5">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="Resources/MonopolyData/shoe.png" AlignmentX="Left"  AlignmentY="Top" Stretch="Uniform"/>
+                </Canvas.Background>
+            </Canvas>
+            <Grid x:Name="CheckingPlayerTitleDeeds1" Grid.Row="3" Grid.Column="2" Grid.RowSpan="8" Grid.ColumnSpan="2" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="100*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+            <Grid x:Name="CheckingPlayerTitleDeeds2" Grid.Row="3" Grid.Column="2" Grid.RowSpan="8" Grid.ColumnSpan="2" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="100*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+
+            <Grid x:Name="CheckingTitleDeedGrid" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Canvas x:Name="CheckingTitleDeedPicture" Grid.RowSpan="6" MouseDown="CheckingTitleDeedPicture_MouseDown">
+                    <Canvas.Background>
+                        <ImageBrush ImageSource="Resources/MonopolyData/Title Deeds/B. AND O. RAILROAD.png" AlignmentX="Left"  AlignmentY="Top" Stretch="Uniform"/>
+                    </Canvas.Background>
+                </Canvas>
+                <Viewbox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left">
+                    <Label x:Name="CheckingTitleDeedHouses" Content="Houses:    " FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+                </Viewbox>
+                <Viewbox Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left">
+                    <Label x:Name="CheckingTitleDeedHotels" Content="Hotels:    " FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+                </Viewbox>
+                <Viewbox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left">
+                    <Label x:Name="CheckingTitleDeedRent" Content="Rent:   " FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+                </Viewbox>
+            </Grid>
+
+            <Grid x:Name="PageGrid" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="PageBack" BorderThickness="0" Content="⯇" Margin="3,5" Background="#FFAAD0B4" Grid.Column="1" Click="PageBack_Click"></Button>
+                <Viewbox Grid.Column="2">
+                    <Label x:Name="Page" Content="Page 1" FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+                </Viewbox>
+                <Button x:Name="PageForward" BorderThickness="0" Content="⯈"  Grid.Column="3" Margin="3,5" Background="#FFAAD0B4" Click="PageForward_Click"></Button>
+            </Grid>
+            <Viewbox Grid.Row="7" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <TextBlock Padding="5" x:Name="CheckingPlayerName" Text="Username:" FontFamily="Modern No. 20" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+            <Viewbox Grid.Row="8" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <TextBlock Padding="5" x:Name="CheckingPlayerRank" Text="Rank: nornak" FontFamily="Modern No. 20" FontWeight="Bold"></TextBlock>
+            </Viewbox>
+            <Viewbox Grid.Row="9" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label x:Name="CheckingPlayerBalance" Content="Balance:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox Grid.Row="10" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label x:Name="CheckingPlayerPosition" Content="Position:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+        </Grid>
+
+        <Grid x:Name="YourPropertyOptions" Grid.Row="2" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="19*"/>
+                <ColumnDefinition Width="251*"/>
+                <ColumnDefinition Width="149*"/>
+                <ColumnDefinition Width="155*"/>
+                <ColumnDefinition Width="18*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Viewbox x:Name="RequestAmountBox" Visibility="Visible" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2"  HorizontalAlignment="Left">
+                <TextBox x:Name="RequestAmount" Text="Amount" BorderThickness="0"  Background="#FFB7D8C0" Margin="0,1,0,0" Height="25" Width="168" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontStyle="Italic" FontWeight="Bold" PreviewTextInput="NumberValidationTextBox" Foreground="#FF666666" GotFocus="RequestAmount_GotFocus" LostFocus="RequestAmount_LostFocus" KeyDown="RequestAmount_KeyDown" KeyUp="RequestAmount_KeyUp"/>
+            </Viewbox>
+            <Viewbox x:Name="RequestSellBox" Visibility="Visible" Grid.Column="2" Grid.Row="8" HorizontalAlignment="Left" Grid.ColumnSpan="2">
+                <Button x:Name="RequestSell" Content="Request sell" Margin="0,1,0,0" BorderThickness="0" HorizontalAlignment="Left" Background="#FFAAD0B4" Height="25" Width="168" FontFamily="Stencil" Click="RequestSell_Click"/>
+            </Viewbox>
+            <Viewbox x:Name="RequestErrorBox"  Visibility="Visible" Grid.Column="2" Grid.Row="9" HorizontalAlignment="Left" Grid.ColumnSpan="2" OpacityMask="#FFCD1111">
+                <Label x:Name="RequestError" Content="" Foreground="#FFC70B0B"></Label>
+            </Viewbox>
+            <Viewbox x:Name="RequestUsernameBox"  Visibility="Visible" Grid.Column="2" Grid.Row="7" HorizontalAlignment="Left" Grid.ColumnSpan="2" OpacityMask="#FFCD1111">
+                <Label x:Name="RequestUsername" Content="Username: ultraskyzz"></Label>
+            </Viewbox>
+            
+            <Grid Margin="0,0,0,4" x:Name="RequestGrid" Grid.Row="3" Grid.Column="2" Grid.RowSpan="3" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <Border Margin="6,0,0,0" x:Name="SelectCar" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Padding="4" CornerRadius="10" MouseDown="SelectCar_MouseDown" MouseEnter="SelectCar_MouseEnter" MouseLeave="SelectCar_MouseLeave">
+                    <Canvas>
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="Resources/MonopolyData/car.png" Stretch="Uniform"/>
+                        </Canvas.Background>
+                    </Canvas>
+                </Border>
+                <Border Margin="6,0,0,0" x:Name="SelectDog" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Padding="5" CornerRadius="10" MouseDown="SelectDog_MouseDown" MouseEnter="SelectDog_MouseEnter" MouseLeave="SelectDog_MouseLeave">
+                    <Canvas>
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="Resources/MonopolyData/dog.png" Stretch="Uniform"/>
+                        </Canvas.Background>
+                    </Canvas>
+                </Border>
+                <Border Margin="6,0,0,0" x:Name="SelectHat" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Padding="5" CornerRadius="10" MouseDown="SelectHat_MouseDown" MouseEnter="SelectHat_MouseEnter" MouseLeave="SelectHat_MouseLeave">
+                    <Canvas>
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="Resources/MonopolyData/hat.png" Stretch="Uniform"/>
+                        </Canvas.Background>
+                    </Canvas>
+                </Border>
+                <Border Margin="6,0,0,0" x:Name="SelectShip" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Padding="3" CornerRadius="10" MouseDown="SelectShip_MouseDown" MouseEnter="SelectShip_MouseEnter" MouseLeave="SelectShip_MouseLeave">
+                    <Canvas>
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="Resources/MonopolyData/ship.png" Stretch="Uniform"/>
+                        </Canvas.Background>
+                    </Canvas>
+                </Border>
+                <Border Margin="6,0,0,0" x:Name="SelectIron" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Padding="4" CornerRadius="10" MouseDown="SelectIron_MouseDown" MouseEnter="SelectIron_MouseEnter" MouseLeave="SelectIron_MouseLeave">
+                    <Canvas>
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="Resources/MonopolyData/iron.png" Stretch="Uniform"/>
+                        </Canvas.Background>
+                    </Canvas>
+                </Border>
+                <Border Margin="6,0,0,0" x:Name="SelectShoe" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Padding="5" CornerRadius="10" MouseDown="SelectShoe_MouseDown" MouseEnter="SelectShoe_MouseEnter" MouseLeave="SelectShoe_MouseLeave">
+                    <Canvas>
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="Resources/MonopolyData/shoe.png" Stretch="Uniform"/>
+                        </Canvas.Background>
+                    </Canvas>
+                </Border>
+                <Border Margin="6,0,0,0" x:Name="SelectThimble" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Padding="7" CornerRadius="10" MouseDown="SelectThimble_MouseDown" MouseEnter="SelectThimble_MouseEnter" MouseLeave="SelectThimble_MouseLeave">
+                    <Canvas>
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="Resources/MonopolyData/thimble.png" Stretch="Uniform"/>
+                        </Canvas.Background>
+                    </Canvas>
+                </Border>
+                <Border Margin="6,0,0,0" x:Name="SelectCustom" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Padding="4" CornerRadius="10" MouseDown="SelectCustom_MouseDown" MouseEnter="SelectCustom_MouseEnter" MouseLeave="SelectCustom_MouseLeave">
+                    <Canvas>
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="Resources/MonopolyData/custom.png" Stretch="Uniform"/>
+                        </Canvas.Background>
+                    </Canvas>
+                </Border>
+            </Grid>
+            
+            <Canvas x:Name="PropertyOptionsTitleDeed"  Visibility="Hidden" Grid.Column="3" Grid.Row="3" Grid.RowSpan="7">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="Resources/MonopolyData/26.png" AlignmentX="Left"  AlignmentY="Top" Stretch="Uniform"/>
+                </Canvas.Background>
+            </Canvas>
+
+            <Viewbox Grid.Row="3" Grid.Column="2" Visibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label   x:Name="PropertyOptionsHouses" Content="Houses:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+
+            <Viewbox Grid.Row="4" Grid.Column="2" Visibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label   x:Name="PropertyOptionsHotels" Content="Hotels:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+
+            <Viewbox Grid.Row="5" Grid.Column="2" Visibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label   x:Name="PropertyOptionsRent" Content="Rent:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+
+            <Viewbox Grid.Row="6" Grid.Column="2" Visibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label   x:Name="PropertyOptionsPrice" Content="Price:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+
+            <Viewbox Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,0,0">
+                <Button x:Name="PropertyOptionsClose" Content="CLOSE" Margin="0,0,0,2" BorderThickness="0" HorizontalAlignment="Left" Background="#FFFF8080" Height="26" Width="79" FontFamily="Stencil" RenderTransformOrigin="0.551,0.551" Click="PropertyOptionsClose_Click"></Button>
+            </Viewbox>
+            
+            <Viewbox x:Name="PropertyOptionsNameViewBox" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Label x:Name="PropertyOptionsName" Content="Property options for:"  FontFamily="Modern No. 20" FontWeight="Bold"></Label>
+            </Viewbox>
+            <Viewbox x:Name="BuyProperty" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left">
+                <Button x:Name="BuyProperty1" Content="BUY $" Margin="0,1,0,0" BorderThickness="0" HorizontalAlignment="Left" Background="#FFAAD0B4" Height="25" Width="168" FontFamily="Stencil" Click="BuyProperty1_Click"></Button>
+            </Viewbox>
+            <Viewbox x:Name="SellProperty" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left">
+                <Button x:Name="SellProperty1" Content="SELL $" Margin="0,1,0,0" BorderThickness="0" HorizontalAlignment="Left" Background="#FFAAD0B4" Height="25" Width="168" FontFamily="Stencil" Click="SellProperty1_Click"></Button>
+            </Viewbox>
+            <Viewbox x:Name="BuyHouse" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left">
+                <Button x:Name="BuyHouse1" Content="BUY HOUSE $" Margin="0,1,0,0" BorderThickness="0" HorizontalAlignment="Left" Background="#FFAAD0B4" Height="25" Width="168" FontFamily="Stencil" Click="BuyHouse1_Click"></Button>
+            </Viewbox>
+            <Viewbox x:Name="SellHouse" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left">
+                <Button x:Name="SellHouse1" Content="SELL HOUSE $" Margin="0,1,0,0" BorderThickness="0" HorizontalAlignment="Left" Background="#FFAAD0B4" Height="25" Width="168" FontFamily="Stencil" Click="SellHouse1_Click"></Button>
+            </Viewbox>
+            <Viewbox x:Name="BuyHotel" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Left">
+                <Button x:Name="BuyHotel1" Content="BUY HOTEL $" Margin="0,1,0,0" BorderThickness="0" HorizontalAlignment="Left" Background="#FFAAD0B4" Height="25" Width="168" FontFamily="Stencil" Click="BuyHotel1_Click"></Button>
+            </Viewbox>
+            <Viewbox x:Name="SellHotel" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Left">
+                <Button x:Name="SellHotel1" Content="SELL HOTEL $" Margin="0,1,0,0" BorderThickness="0" HorizontalAlignment="Left" Background="#FFAAD0B4" Height="25" Width="168" FontFamily="Stencil" Click="SellHotel1_Click"></Button>
+            </Viewbox>
+            <Viewbox x:Name="SellToPlayer" Grid.Column="1" Grid.Row="9" HorizontalAlignment="Left">
+                <Button x:Name="SellToPlayer1" Content="SELL TO PLAYER" Margin="0,1,0,0" BorderThickness="0" HorizontalAlignment="Left" Background="#FFAAD0B4" Height="25" Width="168" FontFamily="Stencil" Click="SellToPlayer1_Click"></Button>
+            </Viewbox>
+            <Viewbox x:Name="Mortgage" Grid.Column="1" Grid.Row="10" HorizontalAlignment="Left" Visibility="Hidden">
+                <Button x:Name="Mortgage1" Content="MORTGAGE" Margin="0,1,0,0" BorderThickness="0" HorizontalAlignment="Left" Background="#FFAAD0B4" Height="25" Width="168" FontFamily="Stencil"></Button>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</Window>

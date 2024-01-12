@@ -1,0 +1,10 @@
+<Application 
+            x:Class="Monopoly_0._9._1._1_Advanced.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Monopoly_0._9._1._1_Advanced"
+             StartupUri="LoginRegister.xaml">
+    <Application.Resources>
+
+    </Application.Resources>
+</Application>
